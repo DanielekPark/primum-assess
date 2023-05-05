@@ -1,16 +1,15 @@
-import React, {FC, useState, useEffect, Fragment } from 'react'
+import React, {FC, useState, useEffect, Fragment, ChangeEvent } from 'react'
 import { HomeScreen } from 'app/features/home/screen'
 import CountriesList from '../components/countrieslist';
+import { count } from 'console';
 
 const Home: FC = () => {
   const [countriesData, setCountriesData] = useState<{list: Array<unknown>, searchVal: string, filtered: Array<unknown>}>({
     list: [],
-    searchVal: '',
+    searchVal: "",
     filtered: [],
   }); 
 
-  //fetches data for countries
-  //useCallback post https://stackoverflow.com/questions/60835660/proper-use-of-usecallback
   const fetchData = async () => {
     try {
       const response = await fetch(
@@ -23,32 +22,42 @@ const Home: FC = () => {
     }
   }
 
+
   //filter countries using drop down
   const handleDropDown = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const filterSearch = countriesData?.list?.filter((country: any) => e.target.value === country.region); 
+    const region = e.target.value; 
+    setCountriesData({...countriesData, searchVal: region}); 
+    const filterSearch = countriesData?.list?.filter((country: any) => region === country.region);     
     setCountriesData({...countriesData, filtered: filterSearch}); 
-    console.log(countriesData.filtered)
   }
 
   //filters countries by typing
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {}
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setCountriesData({...countriesData, searchVal: e.target.value})
+    
+    const results = countriesData?.list?.filter((country: any) => {
+      if(country.name.common.toLowerCase().includes(e.target.value.toLowerCase())){
+        return country; 
+      }
+    }); 
+    setCountriesData({...countriesData, filtered: results})
+  }
 
   useEffect(() => {
     fetchData()
   }, [])
 
-  useEffect(() => {
-    console.table(countriesData.filtered)
-  }, [countriesData])
+  // useEffect(() => {
+  //   console.log(countriesData.searchVal)
+  // }, [countriesData])
 
 
-  //implement the filter feature
-  //set filtered key value pair to have a copy of the key value pair list
   return (
     <div className="pt-8">
       <header className="pb-8">
         <div className="mx-auto flex w-11/12 items-center justify-between">
           <h1>Where in the world?</h1>
+          {/* replace button with toggle dark mode */}
           <button className="rounded bg-blue-500 px-4 py-2 font-bold text-white">
             button
           </button>
@@ -58,19 +67,19 @@ const Home: FC = () => {
         <div>
           <form>
             <input
+              type="text"
               className="block rounded-lg bg-blue-300 p-2.5 text-sm"
               placeholder="Search for a country..."
-              list="region"
-              onChange={(e) => handleChange(e)}
+              onChange={handleChange}
             />
             <div className="flex mb-8">
               <div className="mt-10">
-                <select id="region" className="" value={countriesData.searchVal} onChange={(e) => handleDropDown(e)}>
+                <select id="region" className="" onChange={(e) => handleDropDown(e)}>
                   <option value="" disabled>
                     Filter by region
                   </option>
                   <option value="Africa">Africa</option>
-                  <option value="America">America</option>
+                  <option value="Americas">America</option>
                   <option value="Asia">Asia</option>
                   <option value="Europe">Europe</option>
                   <option value="Oceania">Oceania</option>
