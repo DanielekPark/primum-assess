@@ -18,6 +18,15 @@ const nextConfig = {
     'nativewind',
     'react-native-gesture-handler',
   ],
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'flagcdn.com',
+        port: '',
+      },
+    ],
+  },  
 }
 
 module.exports = withExpo(nextConfig)

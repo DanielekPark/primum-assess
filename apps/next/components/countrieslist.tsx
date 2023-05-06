@@ -1,4 +1,6 @@
-import React, { FC, useState, useEffect, Fragment } from 'react'
+import React from 'react'; 
+import { SolitoImage } from 'solito/image';
+import styles from '../css/styles.module.css';
 
 type countriesData = {
   list: Array<unknown>
@@ -6,7 +8,7 @@ type countriesData = {
   filtered: Array<unknown>
 }
 
-const CountriesList = ({ list, searchVal ,filtered }: countriesData) => {
+const CountriesList = ({ list, searchVal, filtered }: countriesData) => {
   // shows filtered list if using select
   if (filtered.length > 0) {
     return (
@@ -14,32 +16,35 @@ const CountriesList = ({ list, searchVal ,filtered }: countriesData) => {
         {filtered?.map((country: any, index: number) => {
           return (
             <div
-              className="mx-auto mb-8 max-w-sm rounded "
+              className="mx-auto mb-8 max-w-sm "
               key={`react-key${index}-filtered`}
             >
-              {/* Need padding and size */}
-              <div className="">
-                {/* replace img with Next-image */}
-                <img
-                  className="w-full"
+              <div className="h-28 w-28 bg-white pb-2 pl-2 pr-2 pt-2">
+                {/* <Image
                   src={country.coatOfArms.png}
-                  alt="Flag"
-                />
+                  alt={country.name.common}
+                  height={100}
+                  width={100}
+                /> */}
               </div>
-
-              <div className="px-8 py-4">
-                <p className="mb-2 text-xl font-bold">
-                  {country.name.common}
-                </p>
-                <p className="text-base text-gray-700">
-                  Population: {country.population}
-                </p>
-                <p className="text-base text-gray-700">
-                  Region: {country.region}
-                </p>
-                <p className="text-base text-gray-700">
-                  Capital: {country.capital[0]}
-                </p>
+              <div className="flex justify-center">
+                <div className="mt-2  pb-8 pt-4">
+                  <p className="mb-2 text-xl font-bold">
+                    {country.name.common}
+                  </p>
+                  <p className="text-base text-gray-700">
+                    <span className="font-bold">Population: </span>
+                    {country.population}
+                  </p>
+                  <p className="text-base text-gray-700">
+                    <span className="font-bold">Region: </span>
+                    {country.region}
+                  </p>
+                  <p className="text-base text-gray-700">
+                    <span className="font-bold">Capital: </span>
+                    {country.capital[0]}
+                  </p>
+                </div>
               </div>
             </div>
           )
@@ -49,7 +54,7 @@ const CountriesList = ({ list, searchVal ,filtered }: countriesData) => {
   }
 
   //Display message if there are no search results that matches
-  if(searchVal.length > 0 && filtered.length < 1) {
+  if (searchVal.length > 0 && filtered.length < 1) {
     return (
       <>
         <h2>No results</h2>
@@ -57,33 +62,43 @@ const CountriesList = ({ list, searchVal ,filtered }: countriesData) => {
     )
   }
 
-    return (
-      <>
-        {list?.map((country: any, index: number) => {
-          return (
-            <div
-              className="mx-auto mb-8 max-w-sm rounded "
-              key={`react-key${index}`}
-            >
-              <img className="w-full" src={country.coatOfArms.png} alt="Flag" />
-              <div className="px-8 py-4">
-                <p className="mb-2 text-xl font-bold">
-                  {country.name.common}</p>
-                <p className="text-base text-gray-700">
-                  Population: {country.population}
+  return (
+    <>
+      {list?.map((country: any, index: number) => {
+        return (
+          <div className={`mb-8 bg-white mx-auto ${styles.container} rounded-lg`} key={`react-key${index}`}>
+            <div className={`${styles.relativeP} py-16`}>
+              <SolitoImage
+                src={country.flags.svg}
+                alt={`Flag of ${country.name.common}`}
+                fill={true}
+              />
+            </div>
+            {/* country name and info */}
+            <div className={`${styles.info} pt-2`}>
+              <div className="pt-4">
+                <p className="text-xl font-bold">
+                  {country.name.common}
                 </p>
                 <p className="text-base text-gray-700">
-                  Region: {country.region}
+                  <span className="font-bold">Population: </span>
+                  {country.population}
                 </p>
                 <p className="text-base text-gray-700">
-                  Capital: {country.capital[0]}
+                  <span className="font-bold">Region: </span>
+                  {country.region}
+                </p>
+                <p className="text-base text-gray-700">
+                  <span className="font-bold">Capital: </span>
+                  {country.capital[0]}
                 </p>
               </div>
             </div>
-          )
-        })}
-      </>
-    )
+          </div>
+        )
+      })}
+    </>
+  )
 }
 
 export default CountriesList

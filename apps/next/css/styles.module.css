@@ -1,0 +1,15 @@
+.container {
+    border: 2px solid red;
+    width: 60%;
+}
+
+.relativeP {
+    position: relative;
+    padding: 4rem;
+}
+
+/* country name and info */
+.info {
+    padding: 1rem 0 1.5rem 1.5rem; 
+    line-height: 3;
+}

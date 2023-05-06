@@ -1,65 +1,69 @@
-import React, {FC, useState, useEffect, Fragment, ChangeEvent } from 'react'
-import { HomeScreen } from 'app/features/home/screen'
-import CountriesList from '../components/countrieslist';
-import { count } from 'console';
+import React, { FC, useState, useEffect, ChangeEvent } from 'react'
+import CountriesList from '../components/countrieslist'
 
 const Home: FC = () => {
-  const [countriesData, setCountriesData] = useState<{list: Array<unknown>, searchVal: string, filtered: Array<unknown>}>({
+  const [countriesData, setCountriesData] = useState<{
+    list: Array<unknown>
+    searchVal: string
+    filtered: Array<unknown>
+  }>({
     list: [],
-    searchVal: "",
+    searchVal: '',
     filtered: [],
-  }); 
+  })
 
   const fetchData = async () => {
     try {
       const response = await fetch(
         'https://restcountries.com/v3.1/independent?status=true'
-      ); 
-      const data = await response.json(); 
-      setCountriesData({ ...countriesData, list: data }); 
+      )
+      const data = await response.json()
+      setCountriesData({ ...countriesData, list: data })
     } catch (err) {
-      throw err; 
+      throw err
     }
   }
 
+  useEffect(() => {
+    console.log(countriesData.list)
+  },[countriesData])
 
   //filter countries using drop down
-  const handleDropDown = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const region = e.target.value; 
-    setCountriesData({...countriesData, searchVal: region}); 
-    const filterSearch = countriesData?.list?.filter((country: any) => region === country.region);     
-    setCountriesData({...countriesData, filtered: filterSearch}); 
+  const handleDropDown = (e: ChangeEvent<HTMLSelectElement>) => {
+    const region = e.target.value
+    setCountriesData({ ...countriesData, searchVal: region })
+    const filterSearch = countriesData?.list?.filter(
+      (country: any) => region === country.region
+    )
+    setCountriesData({ ...countriesData, filtered: filterSearch })
   }
 
   //filters countries by typing
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setCountriesData({...countriesData, searchVal: e.target.value})
-    
+    setCountriesData({ ...countriesData, searchVal: e.target.value })
+
     const results = countriesData?.list?.filter((country: any) => {
-      if(country.name.common.toLowerCase().includes(e.target.value.toLowerCase())){
-        return country; 
+      if (
+        country.name.common.toLowerCase().includes(e.target.value.toLowerCase())
+      ) {
+        return country
       }
-    }); 
-    setCountriesData({...countriesData, filtered: results})
+    })
+    setCountriesData({ ...countriesData, filtered: results })
   }
 
   useEffect(() => {
-    fetchData()
+    fetchData(); 
   }, [])
 
-  // useEffect(() => {
-  //   console.log(countriesData.searchVal)
-  // }, [countriesData])
-
-
   return (
-    <div className="pt-8">
-      <header className="pb-8">
+    <div className="bg-gray-100">
+      <header className="mb-6 bg-white pb-4 pt-4">
         <div className="mx-auto flex w-11/12 items-center justify-between">
-          <h1>Where in the world?</h1>
+          <h1 className="font-medium">Where in the world?</h1>
           {/* replace button with toggle dark mode */}
-          <button className="rounded bg-blue-500 px-4 py-2 font-bold text-white">
-            button
+          <button className="rounded px-4 py-2 font-bold text-black">
+            dark
           </button>
         </div>
       </header>
@@ -68,13 +72,18 @@ const Home: FC = () => {
           <form>
             <input
               type="text"
-              className="block rounded-lg bg-blue-300 p-2.5 text-sm"
+              className="bg-whites block w-full rounded-lg p-2.5 text-sm font-medium"
               placeholder="Search for a country..."
               onChange={handleChange}
             />
-            <div className="flex mb-8">
+            <div className="mb-8 flex">
               <div className="mt-10">
-                <select id="region" className="" onChange={(e) => handleDropDown(e)}>
+                {/* Filter using drop down, select element */}
+                <select
+                  id="region"
+                  className="rounded-lg pb-2 pl-2 pr-12 pt-2"
+                  onChange={(e) => handleDropDown(e)}
+                >
                   <option value="" disabled>
                     Filter by region
                   </option>
@@ -90,7 +99,7 @@ const Home: FC = () => {
         </div>
 
         {/* List of countries */}
-        <div className="">
+        <div className="border-2 border-black pb-2">
           <CountriesList {...countriesData} />
         </div>
       </div>
@@ -98,4 +107,4 @@ const Home: FC = () => {
   )
 }
 
-export default Home; 
+export default Home
