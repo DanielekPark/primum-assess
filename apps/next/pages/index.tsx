@@ -1,5 +1,6 @@
 import React, { FC, useState, useEffect, ChangeEvent } from 'react'
 import CountriesList from '../components/countrieslist'
+import styles from '../css/styles.module.css'
 
 const Home: FC = () => {
   const [countriesData, setCountriesData] = useState<{
@@ -24,9 +25,9 @@ const Home: FC = () => {
     }
   }
 
-  useEffect(() => {
-    console.log(countriesData.list)
-  },[countriesData])
+  // useEffect(() => {
+  //   console.log(countriesData.list)
+  // },[countriesData])
 
   //filter countries using drop down
   const handleDropDown = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -53,14 +54,14 @@ const Home: FC = () => {
   }
 
   useEffect(() => {
-    fetchData(); 
+    fetchData()
   }, [])
 
   return (
-    <div className="bg-gray-100">
-      <header className="mb-6 bg-white pb-4 pt-4">
+    <div className={`bg-gray-100 `}>
+      <header className="mb-6 bg-white pb-4 pt-4 md:mb-2">
         <div className="mx-auto flex w-11/12 items-center justify-between">
-          <h1 className="font-medium">Where in the world?</h1>
+          <h1 className={`font-medium ${styles.red}`}>Where in the world?</h1>
           {/* replace button with toggle dark mode */}
           <button className="rounded px-4 py-2 font-bold text-black">
             dark
@@ -69,13 +70,15 @@ const Home: FC = () => {
       </header>
       <div className="mx-auto w-11/12">
         <div>
-          <form>
-            <input
-              type="text"
-              className="bg-whites block w-full rounded-lg p-2.5 text-sm font-medium"
-              placeholder="Search for a country..."
-              onChange={handleChange}
-            />
+          <form className="md:flex md:items-center md:justify-between">
+            <div className="md:w-1/3">
+              <input
+                type="text"
+                className="bg-white block w-full rounded-lg pt-2 pb-2 text-sm font-medium md:mt-2"
+                placeholder="Search for a country..."
+                onChange={handleChange}
+              />
+            </div>
             <div className="mb-8 flex">
               <div className="mt-10">
                 {/* Filter using drop down, select element */}
@@ -99,7 +102,7 @@ const Home: FC = () => {
         </div>
 
         {/* List of countries */}
-        <div className="border-2 border-black pb-2">
+        <div className={`pb-2 md:flex md:justify-between md:flex-wrap md:items-between ${styles.container}`}>
           <CountriesList {...countriesData} />
         </div>
       </div>

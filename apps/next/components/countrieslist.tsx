@@ -1,6 +1,6 @@
-import React from 'react'; 
-import { SolitoImage } from 'solito/image';
-import styles from '../css/styles.module.css';
+import React from 'react'
+import { SolitoImage } from 'solito/image'
+import styles from '../css/styles.module.css'
 
 type countriesData = {
   list: Array<unknown>
@@ -16,22 +16,20 @@ const CountriesList = ({ list, searchVal, filtered }: countriesData) => {
         {filtered?.map((country: any, index: number) => {
           return (
             <div
-              className="mx-auto mb-8 max-w-sm "
-              key={`react-key${index}-filtered`}
+              className={`mx-auto mb-8 bg-white ${styles.card} rounded-lg`}
+              key={`list-react-key${index}`}
             >
-              <div className="h-28 w-28 bg-white pb-2 pl-2 pr-2 pt-2">
-                {/* <Image
-                  src={country.coatOfArms.png}
-                  alt={country.name.common}
-                  height={100}
-                  width={100}
-                /> */}
+              <div className={`${styles.relativeP} py-16`}>
+                <SolitoImage
+                  src={country.flags.svg}
+                  alt={`Flag of ${country.name.common}`}
+                  fill={true}
+                />
               </div>
-              <div className="flex justify-center">
-                <div className="mt-2  pb-8 pt-4">
-                  <p className="mb-2 text-xl font-bold">
-                    {country.name.common}
-                  </p>
+              {/* country name and info */}
+              <div className={`${styles.info} pt-2`}>
+                <div className="pt-4">
+                  <p className="text-xl font-bold">{country.name.common}</p>
                   <p className="text-base text-gray-700">
                     <span className="font-bold">Population: </span>
                     {country.population}
@@ -66,7 +64,10 @@ const CountriesList = ({ list, searchVal, filtered }: countriesData) => {
     <>
       {list?.map((country: any, index: number) => {
         return (
-          <div className={`mb-8 bg-white mx-auto ${styles.container} rounded-lg`} key={`react-key${index}`}>
+          <div
+            className={`mb-8 bg-white ${styles.card} rounded-lg`}
+            key={`react-key${index}`}
+          >
             <div className={`${styles.relativeP} py-16`}>
               <SolitoImage
                 src={country.flags.svg}
@@ -77,9 +78,7 @@ const CountriesList = ({ list, searchVal, filtered }: countriesData) => {
             {/* country name and info */}
             <div className={`${styles.info} pt-2`}>
               <div className="pt-4">
-                <p className="text-xl font-bold">
-                  {country.name.common}
-                </p>
+                <p className="text-xl font-bold">{country.name.common}</p>
                 <p className="text-base text-gray-700">
                   <span className="font-bold">Population: </span>
                   {country.population}

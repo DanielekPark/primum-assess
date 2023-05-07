@@ -1,6 +1,9 @@
-.container {
-    border: 2px solid red;
+/* ===================================== 
+    INDIVIDUAL COUNTRY CARDS
+========================================*/
+.card {
     width: 60%;
+    margin: 0 auto; 
 }
 
 .relativeP {
@@ -13,3 +16,25 @@
     padding: 1rem 0 1.5rem 1.5rem; 
     line-height: 3;
 }
+
+/* ===================================== 
+    MEDIA QUERIES
+========================================*/
+
+  @media (min-width: 768px) {
+    .card {
+        width: 30%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .container{
+        min-height: 70vh;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .card {
+        width: 21%;
+    }
+  }
