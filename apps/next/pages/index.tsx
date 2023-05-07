@@ -102,7 +102,7 @@ const Home: FC = () => {
         </div>
 
         {/* List of countries */}
-        <div className={`pb-2 md:flex md:justify-between md:flex-wrap md:items-between ${styles.container}`}>
+        <div className={`pb-2 md:flex md:justify-between md:flex-wrap md:items-between md:items-start ${styles.container}`}>
           <CountriesList {...countriesData} />
         </div>
       </div>
