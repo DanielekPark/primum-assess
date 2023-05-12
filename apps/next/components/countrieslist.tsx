@@ -1,6 +1,6 @@
-import React from 'react'
-import { SolitoImage } from 'solito/image'
-import styles from '../css/styles.module.css'
+import React from 'react'; 
+import styles from '../css/styles.module.css'; 
+import Card from './card'; 
 
 type countriesData = {
   list: Array<unknown>
@@ -12,42 +12,19 @@ const CountriesList = ({ list, searchVal, filtered }: countriesData) => {
   // shows filtered list if using select
   if (filtered.length > 0) {
     return (
-      <>
+      <div className={`pb-2 ${styles.card}`}>
         {filtered?.map((country: any, index: number) => {
           return (
-            <div
-              className={`mx-auto mb-8 bg-white ${styles.card} rounded-lg`}
-              key={`list-react-key${index}`}
-            >
-              <div className={`${styles.relativeP} py-16`}>
-                <SolitoImage
-                  src={country.flags.svg}
-                  alt={`Flag of ${country.name.common}`}
-                  fill={true}
-                />
-              </div>
-              {/* country name and info */}
-              <div className={`${styles.info} pt-2`}>
-                <div className="pt-4">
-                  <p className="text-xl font-bold">{country.name.common}</p>
-                  <p className="text-base text-gray-700">
-                    <span className="font-bold">Population: </span>
-                    {country.population}
-                  </p>
-                  <p className="text-base text-gray-700">
-                    <span className="font-bold">Region: </span>
-                    {country.region}
-                  </p>
-                  <p className="text-base text-gray-700">
-                    <span className="font-bold">Capital: </span>
-                    {country.capital[0]}
-                  </p>
-                </div>
-              </div>
-            </div>
+            <Card 
+            key={`filter-key${country.name.common + index}`}
+            flags={country.flags.svg}
+            common={country.name.common}
+            population={country.population}
+            region={country.region}
+            capital={country.capital}/>
           )
         })}
-      </>
+      </div>
     )
   }
 
@@ -64,40 +41,17 @@ const CountriesList = ({ list, searchVal, filtered }: countriesData) => {
     <>
       {list?.map((country: any, index: number) => {
         return (
-          <div
-            className={`mb-8 bg-white ${styles.card} rounded-lg`}
-            key={`react-key${index}`}
-          >
-            <div className={`${styles.relativeP} py-16`}>
-              <SolitoImage
-                src={country.flags.svg}
-                alt={`Flag of ${country.name.common}`}
-                fill={true}
-              />
-            </div>
-            {/* country name and info */}
-            <div className={`${styles.info} pt-2`}>
-              <div className="pt-4">
-                <p className="text-xl font-bold">{country.name.common}</p>
-                <p className="text-base text-gray-700">
-                  <span className="font-bold">Population: </span>
-                  {country.population}
-                </p>
-                <p className="text-base text-gray-700">
-                  <span className="font-bold">Region: </span>
-                  {country.region}
-                </p>
-                <p className="text-base text-gray-700">
-                  <span className="font-bold">Capital: </span>
-                  {country.capital[0]}
-                </p>
-              </div>
-            </div>
-          </div>
+            <Card 
+            key={`filter-key${country.name.common + index}`}
+            flags={country.flags.svg}
+            common={country.name.common}
+            population={country.population}
+            region={country.region}
+            capital={country.capital}/>
         )
       })}
     </>
   )
 }
 
-export default CountriesList
+export default CountriesList; 

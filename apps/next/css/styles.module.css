@@ -8,7 +8,7 @@
 
 .relativeP {
     position: relative;
-    padding: 4rem;
+    padding: 3.5rem;
 }
 
 /* country name and info */
@@ -23,7 +23,6 @@
 
   @media (min-width: 768px) {
     .card {
-        width: 30%;
         margin-left: 0;
         margin-right: 0;
     }

@@ -25,10 +25,6 @@ const Home: FC = () => {
     }
   }
 
-  // useEffect(() => {
-  //   console.log(countriesData.list)
-  // },[countriesData])
-
   //filter countries using drop down
   const handleDropDown = (e: ChangeEvent<HTMLSelectElement>) => {
     const region = e.target.value

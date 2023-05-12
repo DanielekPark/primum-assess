@@ -1785,6 +1785,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@expo/dev-server@npm:^0.3.0":
+  version: 0.3.0
+  resolution: "@expo/dev-server@npm:0.3.0"
+  dependencies:
+    "@expo/bunyan": 4.0.0
+    "@expo/metro-config": ~0.7.0
+    "@expo/osascript": 2.0.33
+    "@expo/spawn-async": ^1.5.0
+    body-parser: ^1.20.1
+    chalk: ^4.0.0
+    connect: ^3.7.0
+    fs-extra: 9.0.0
+    is-docker: ^2.0.0
+    is-wsl: ^2.1.1
+    node-fetch: ^2.6.0
+    open: ^8.3.0
+    resolve-from: ^5.0.0
+    semver: 7.3.2
+    serialize-error: 6.0.0
+    temp-dir: ^2.0.0
+  checksum: b74ac8fb3c2681e4dde0e32a8eac7367f1cc7cb2874f31f204ae7a496e20a9e94926c0612e1686af7d43fbcfaa7796aa5760271c0be0d18d477d3650c9e9e817
+  languageName: node
+  linkType: hard
+
 "@expo/devcert@npm:^1.0.0":
   version: 1.1.0
   resolution: "@expo/devcert@npm:1.1.0"
@@ -10960,6 +10984,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "solito-with-tailwind@workspace:."
   dependencies:
+    "@expo/dev-server": ^0.3.0
     "@types/react": ^18.0.17
     "@types/react-native": ^0.69.5
     eslint: ^8.21.0
