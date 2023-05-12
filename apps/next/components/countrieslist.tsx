@@ -12,11 +12,11 @@ const CountriesList = ({ list, searchVal, filtered }: countriesData) => {
   // shows filtered list if using select
   if (filtered.length > 0) {
     return (
-      <div className={`pb-2 ${styles.card}`}>
+      <div className={`pb-2 ${styles.wrapper}`}>
         {filtered?.map((country: any, index: number) => {
           return (
             <Card 
-            key={`filter-key${country.name.common + index}`}
+            key={`react-key${country.name.common + index}`}
             flags={country.flags.svg}
             common={country.name.common}
             population={country.population}
@@ -38,7 +38,7 @@ const CountriesList = ({ list, searchVal, filtered }: countriesData) => {
   }
 
   return (
-    <>
+    <div className={`pb-2 ${styles.wrapper}`}>
       {list?.map((country: any, index: number) => {
         return (
             <Card 
@@ -50,7 +50,7 @@ const CountriesList = ({ list, searchVal, filtered }: countriesData) => {
             capital={country.capital}/>
         )
       })}
-    </>
+    </div>
   )
 }
 

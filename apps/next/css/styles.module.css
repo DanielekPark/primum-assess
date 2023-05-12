@@ -2,8 +2,10 @@
     INDIVIDUAL COUNTRY CARDS
 ========================================*/
 .card {
-    width: 60%;
+    width: 50%;
     margin: 0 auto; 
+    border-radius: 0.5rem;
+    overflow: hidden;
 }
 
 .relativeP {
@@ -15,6 +17,7 @@
 .info {
     padding: 1rem 0 1.5rem 1.5rem; 
     line-height: 3;
+    margin-bottom: 1rem;
 }
 
 /* ===================================== 
@@ -22,9 +25,16 @@
 ========================================*/
 
   @media (min-width: 768px) {
+    .wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
     .card {
-        margin-left: 0;
-        margin-right: 0;
+        margin: 1.5rem 0; 
+        width: 30%;
     }
 
     .container{
