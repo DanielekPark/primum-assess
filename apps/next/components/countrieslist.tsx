@@ -3,11 +3,11 @@ import styles from '../css/styles.module.css';
 import Card from './card'; 
 
 type countriesData = {
-  list: Array<unknown>
+  list: any
   searchVal: string
   filtered: Array<unknown>
 }
-
+//STYLE NEXT LINK https://www.slingacademy.com/article/how-to-style-link-component-in-next-js/
 const CountriesList = ({ list, searchVal, filtered }: countriesData) => {
   // shows filtered list if using select
   if (filtered.length > 0) {
@@ -18,10 +18,18 @@ const CountriesList = ({ list, searchVal, filtered }: countriesData) => {
             <Card 
             key={`react-key${country.name.common + index}`}
             flags={country.flags.svg}
-            common={country.name.common}
+            name={country.name.common}
+            nativeName={country.name.common.nativeName}
             population={country.population}
             region={country.region}
-            capital={country.capital}/>
+            capital={country.capital}
+            subregion={country.subregion} 
+            currencies={country.currencies}
+            languages={country.languages}
+            borders={country.borders}
+            tld={country.tld}
+            list={list}
+            />
           )
         })}
       </div>
@@ -41,13 +49,21 @@ const CountriesList = ({ list, searchVal, filtered }: countriesData) => {
     <div className={`pb-2 ${styles.wrapper}`}>
       {list?.map((country: any, index: number) => {
         return (
-            <Card 
-            key={`filter-key${country.name.common + index}`}
-            flags={country.flags.svg}
-            common={country.name.common}
-            population={country.population}
-            region={country.region}
-            capital={country.capital}/>
+          <Card 
+          key={`react-key${country.name.common + index}`}
+          flags={country.flags.svg}
+          name={country.name.common}
+          nativeName={country.name.common.nativeName}
+          population={country.population}
+          region={country.region}
+          capital={country.capital}
+          subregion={country.subregion} 
+          currencies={country.currencies}
+          languages={country.languages}
+          borders={country.borders}
+          tld={country.tld}
+          list={list}
+          />
         )
       })}
     </div>

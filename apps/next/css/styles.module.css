@@ -5,13 +5,24 @@
     width: 50%;
     margin: 0 auto; 
     border-radius: 0.5rem;
-    overflow: hidden;
+    overflow: hidden;    
+    display: block;
+}
+
+.nation .card {
+    width: 100%;
 }
 
 .relativeP {
     position: relative;
     padding: 3.5rem;
 }
+
+.nation .relativeP {
+    height: 40vh; 
+    margin: 1rem 0 1.5rem 1.5rem; 
+}
+
 
 /* country name and info */
 .info {
@@ -20,10 +31,23 @@
     margin-bottom: 1rem;
 }
 
+.nation .info{
+    padding: 0 0 1.5rem 1.5rem;
+}
+
+.box {
+    display: flex; 
+    width: 100%; 
+    justify-content: space-between;
+    padding-top: 1rem;
+}
+
+.box button {
+    width: 30%;
+}
 /* ===================================== 
     MEDIA QUERIES
 ========================================*/
-
   @media (min-width: 768px) {
     .wrapper {
         width: 100%;
