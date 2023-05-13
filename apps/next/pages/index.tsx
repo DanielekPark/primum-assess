@@ -32,15 +32,15 @@ const Home: FC = () => {
     fetchData()
   }, [])
 
-  useEffect(() => {
-    console.log(countriesData.list)
-  }, [countriesData])
+  // useEffect(() => {
+  //   console.log(countriesData.list)
+  // }, [countriesData])
 
   return (
     <div className={`bg-gray-100 `}>
       <header className="mb-6 bg-white pb-4 pt-4 md:mb-2">
         <div className="mx-auto flex w-11/12 items-center justify-between">
-          <h1 className={`font-medium ${styles.red}`}>Where in the world?</h1>
+          <h1 className={`font-medium`}>Where in the world?</h1>
           {/* replace button with toggle dark mode */}
           <button className="rounded px-4 py-2 font-bold text-black">
             dark

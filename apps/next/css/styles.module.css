@@ -1,4 +1,21 @@
 /* ===================================== 
+    FORM
+========================================*/
+.form input{
+    width: 100%;
+}
+
+.form input, 
+.form select {
+    padding-left: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.form select {
+    width: 50%;
+}
+
+/* ===================================== 
     INDIVIDUAL COUNTRY CARDS
 ========================================*/
 .card {
@@ -49,6 +66,27 @@
     MEDIA QUERIES
 ========================================*/
   @media (min-width: 768px) {
+    .form {
+        margin-top: 2rem;
+    }
+
+    .form div:first-child {
+        width: 35%;
+    }
+
+    .section {
+        width: 50%;
+    }
+    
+    .form select {
+        margin-left: auto;
+        width: 35%;
+    }
+
+    .form div {
+        margin-bottom: 1rem;
+    }
+
     .wrapper {
         width: 100%;
         display: flex;

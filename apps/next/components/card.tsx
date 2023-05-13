@@ -22,9 +22,15 @@ const Card = ({ population, region, capital, name, nativeName, flags, subregion,
 
   //Stores country info in local storage to display country stats
   const sessionInfo = () => {
-    const allCountries: Array<string> = list?.map((nation: any) => {
-      return { name: nation.name.common, initials: nation.cca3 }; 
-    }); 
+    //Array of nearby countries
+    const nearbyNations = []; 
+    for(let i = 0; i < borders.length; i++){
+      for(let j = 0; j < list.length; j++){
+        if(borders[i] === list[i].name.nativeName){
+          nearbyNations.push(list[i]);
+        }
+      }
+    }
 
     const profile = {
       name,
@@ -36,10 +42,9 @@ const Card = ({ population, region, capital, name, nativeName, flags, subregion,
       subregion,
       currencies,
       languages,
-      allCountries,
-      borders,
+      borders: nearbyNations,
       tld
-    }; 
+    };
 
     sessionStorage.setItem('country', JSON.stringify(profile)); 
   }

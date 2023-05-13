@@ -7,7 +7,7 @@ type countriesData = {
   searchVal: string
   filtered: Array<unknown>
 }
-//STYLE NEXT LINK https://www.slingacademy.com/article/how-to-style-link-component-in-next-js/
+
 const CountriesList = ({ list, searchVal, filtered }: countriesData) => {
   // shows filtered list if using select
   if (filtered.length > 0) {
@@ -19,7 +19,7 @@ const CountriesList = ({ list, searchVal, filtered }: countriesData) => {
             key={`react-key${country.name.common + index}`}
             flags={country.flags.svg}
             name={country.name.common}
-            nativeName={country.name.common.nativeName}
+            nativeName={country.name.nativeName}
             population={country.population}
             region={country.region}
             capital={country.capital}
