@@ -16,7 +16,7 @@
 }
 
 /* ===================================== 
-    INDIVIDUAL COUNTRY CARDS
+    COUNTRY CARDS
 ========================================*/
 .card {
     width: 50%;
@@ -36,10 +36,21 @@
 }
 
 .nation .relativeP {
+    position: static;
+}
+/* ===================================== 
+    COUNTRY PAGE
+========================================*/
+.nation .relativeP {
     height: 40vh; 
-    margin: 1rem 0 1.5rem 1.5rem; 
+    padding-left: 0;
+    margin-left: auto;
+    /* margin-right: 3.5rem;  */
 }
 
+.nation img {
+    padding-left: 0;
+}
 
 /* country name and info */
 .info {
@@ -49,13 +60,13 @@
 }
 
 .nation .info{
-    padding: 0 0 1.5rem 1.5rem;
+    padding: 0 0 1.5rem 0;
 }
 
 .box {
     display: flex; 
     width: 100%; 
-    justify-content: space-between;
+    gap: 1rem;
     padding-top: 1rem;
 }
 

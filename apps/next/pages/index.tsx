@@ -2,7 +2,6 @@ import React, { FC, useState, useEffect, ChangeEvent } from 'react'
 import CountriesList from '../components/countrieslist'
 import styles from '../css/styles.module.css'
 import Form from '../components/form'
-import { count } from 'console'
 
 const Home: FC = () => {
   const [countriesData, setCountriesData] = useState<{
@@ -31,10 +30,6 @@ const Home: FC = () => {
   useEffect(() => {
     fetchData()
   }, [])
-
-  // useEffect(() => {
-  //   console.log(countriesData.list)
-  // }, [countriesData])
 
   return (
     <div className={`bg-gray-100 `}>

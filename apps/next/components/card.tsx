@@ -12,29 +12,29 @@ type country = {
   flags: string
   currencies: string
   languages: unknown
-  nativeName: string
   borders: string
-  tld: Array<string>
+  tld: string
+  altSpellings: Array<string>
   list: any
 }
 
-const Card = ({ population, region, capital, name, nativeName, flags, subregion, languages, currencies, borders, tld, list} : country) => {
+const Card = ({ population, region, capital, name,  flags, subregion, languages, currencies, borders, tld, altSpellings, list} : country) => {
 
   //Stores country info in local storage to display country stats
   const sessionInfo = () => {
     //Array of nearby countries
-    const nearbyNations = []; 
+    const neighbors = []; 
     for(let i = 0; i < borders.length; i++){
       for(let j = 0; j < list.length; j++){
-        if(borders[i] === list[i].name.nativeName){
-          nearbyNations.push(list[i]);
+        if(borders[i] === list[j].cioc){
+          neighbors.push(list[j].name.common);
         }
       }
     }
 
     const profile = {
       name,
-      nativeName,
+      nativeName: altSpellings[altSpellings.length - 1],
       flags,
       population,
       capital,
@@ -42,8 +42,8 @@ const Card = ({ population, region, capital, name, nativeName, flags, subregion,
       subregion,
       currencies,
       languages,
-      borders: nearbyNations,
-      tld
+      borders: neighbors,
+      tld: tld[0]
     };
 
     sessionStorage.setItem('country', JSON.stringify(profile)); 

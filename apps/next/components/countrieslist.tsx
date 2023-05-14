@@ -18,9 +18,7 @@ const CountriesList = ({ list, searchVal, filtered }: countriesData) => {
             <Card 
             key={`react-key${country.name.common + index}`}
             flags={country.flags.svg}
-            name={country.name.common}
-            nativeName={country.name.nativeName}
-            population={country.population}
+            name={country.name.common}            population={country.population}
             region={country.region}
             capital={country.capital}
             subregion={country.subregion} 
@@ -29,6 +27,7 @@ const CountriesList = ({ list, searchVal, filtered }: countriesData) => {
             borders={country.borders}
             tld={country.tld}
             list={list}
+            altSpellings={country.altSpellings}
             />
           )
         })}
@@ -53,7 +52,6 @@ const CountriesList = ({ list, searchVal, filtered }: countriesData) => {
           key={`react-key${country.name.common + index}`}
           flags={country.flags.svg}
           name={country.name.common}
-          nativeName={country.name.common.nativeName}
           population={country.population}
           region={country.region}
           capital={country.capital}
@@ -62,6 +60,7 @@ const CountriesList = ({ list, searchVal, filtered }: countriesData) => {
           languages={country.languages}
           borders={country.borders}
           tld={country.tld}
+          altSpellings={country.altSpellings}
           list={list}
           />
         )

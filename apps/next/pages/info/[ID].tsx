@@ -1,6 +1,7 @@
 import React, { FC, useState, useEffect } from 'react'
 import styles from '../../css/styles.module.css'
-import { SolitoImage } from 'solito/image'
+// import { SolitoImage } from 'solito/image'
+import Image from 'next/image'
 import { count } from 'console'
 
 //COUNTRY PROFILE PAGE
@@ -11,7 +12,11 @@ const ID: FC = () => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const data = JSON.parse(sessionStorage.getItem('country') || '')
-      setCountryData(data)
+      const currency = Object.keys(data.currencies)[0];
+      const lang = Object.keys(data.languages)[0];
+      data.currencies = currency;
+      data.languages = data.languages[lang]; 
+      setCountryData(data); 
     }
   }, [])
 
@@ -34,14 +39,8 @@ const ID: FC = () => {
             <div className={`pb-2 ${styles.wrapper}`}>
               <div className={`${styles.card} mb-8`}>
                 <div className={`${styles.relativeP}`}>
-                {/* <SolitoImage
-                 src={`${countryData.flags}`}
-                 alt={`Flag`}
-                 fill={true}
-                 resizeMode="cover"
-               />  */}
+                <img src={countryData.flags} alt={`Flag of ${countryData.name}`}/>
                 </div>
-
                 {/* country name and info */}
                 <div className={`${styles.info} pt-2`}>
                   <div className="pt-2">
@@ -68,24 +67,26 @@ const ID: FC = () => {
                   <div className="pt-2">
                     <p className="text-base">
                       <span className="font-bold">Top Level Domain: </span>
-                      domain
+                      {countryData.tld}
                     </p>
                     <p className="text-base">
                       <span className="font-bold">Currencies: </span>
-                      currencies
+                      {countryData.currencies}
                     </p>
                     <p className="text-base">
                       <span className="font-bold">Languages: </span>
-                      languages
+                      {countryData.languages}
                     </p>
                     <p className="text-base">
                       <span className="font-bold">Border Countries: </span>
-                      {countryData.capital}
+                      
                     </p>
                     <div className={`${styles.box}`}>
-                      <div className="rounded bg-white px-2">country</div>
-                      <div className="rounded bg-white px-2">country</div>
-                      <div className="rounded bg-white px-2">country</div>
+                      {countryData.borders.map((neighbor: string, idx: number) => {
+                        return (
+                          <div key={`neighbor-key-${idx}`} className="rounded bg-white px-2">{neighbor}</div>
+                        ); 
+                      })}
                     </div>
                   </div>
                 </div>
