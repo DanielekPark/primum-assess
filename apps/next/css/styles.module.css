@@ -9,6 +9,7 @@
 .form select {
     padding-left: 0.5rem;
     border-radius: 0.5rem;
+    margin-bottom: 2rem;
 }
 
 .form select {
@@ -18,12 +19,17 @@
 /* ===================================== 
     COUNTRY CARDS
 ========================================*/
+
 .card {
     width: 50%;
     margin: 0 auto; 
     border-radius: 0.5rem;
     overflow: hidden;    
     display: block;
+}
+
+.link {
+    margin-bottom: 1.5rem;
 }
 
 .nation .card {
@@ -35,21 +41,17 @@
     padding: 3.5rem;
 }
 
-.nation .relativeP {
-    position: static;
-}
 /* ===================================== 
     COUNTRY PAGE
 ========================================*/
 .nation .relativeP {
-    height: 40vh; 
-    padding-left: 0;
+    padding: 0;
     margin-left: auto;
-    /* margin-right: 3.5rem;  */
 }
 
 .nation img {
     padding-left: 0;
+    object-fit: fill;
 }
 
 /* country name and info */
@@ -68,15 +70,21 @@
     width: 100%; 
     gap: 1rem;
     padding-top: 1rem;
+    align-items: center;
 }
 
 .box button {
     width: 30%;
 }
+
+.nation .info:nth-child(2) .box {
+    visibility: hidden;
+}
 /* ===================================== 
     MEDIA QUERIES
 ========================================*/
   @media (min-width: 768px) {
+    /* FORM ELEMENTS */
     .form {
         margin-top: 2rem;
     }
@@ -101,8 +109,8 @@
     .wrapper {
         width: 100%;
         display: flex;
-        justify-content: space-between;
         flex-wrap: wrap;
+        justify-content: space-between;
     }
 
     .card {
@@ -110,13 +118,73 @@
         width: 30%;
     }
 
-    .container{
+    /* ===COUNTRY PAGE ====*/
+    .nation .card {
+        margin-bottom: 0;
+    }
+
+    .container {
         min-height: 70vh;
     }
+
+    .nation .container{
+        margin-left: 0; 
+        align-items: center;
+    }
+
+    .nation .relativeP {
+        margin-right: 2rem;
+        margin-top: auto;
+    }
+
+    .nation h2 {
+        margin-top: 0; 
+    }
+    
+    .nation .info {
+        padding-bottom: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-top: auto; 
+        margin-bottom: auto;
+    }
+
+    .nation .info p {
+        line-height: 2;
+    }
+    
+    .nation .info:nth-child(2) .box {
+        visibility: visible;
+    }
+
+    .nation .info:nth-child(2) .box, 
+    .nation .info:nth-child(3) {
+        margin-top: auto; 
+    }
+
   }
 
   @media (min-width: 1024px) {
     .card {
         width: 21%;
     }
+
+    .nation .relativeP {
+        margin: auto 2rem 0 0; 
+    }
+
+    .box {
+        display: flex;
+        align-items: center;
+        width: 100%; 
+        gap: 1rem;
+        padding-top: 1rem;
+        margin-top: auto;
+    }
+
+    .hide{
+        visibility: hidden;
+    }
+
   }
