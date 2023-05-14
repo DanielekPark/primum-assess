@@ -1,7 +1,6 @@
 import React, { FC, useState, useEffect } from 'react'
 import styles from '../../css/styles.module.css'
-// import { SolitoImage } from 'solito/image'
-import Image from 'next/image'
+import Link from 'next/link'
 
 //COUNTRY PROFILE PAGE
 const ID: FC = () => {
@@ -31,7 +30,16 @@ const ID: FC = () => {
           </button>
         </div>
       </header>
-
+      <div className={`mx-auto mb-12 w-11/12 md:mb-6 md:mt-4`}>
+        <div className={`mx-auto w-11/12 md:ml-0 `}>
+          <Link
+            href="/"
+            className={`font-sm rounded px-4 py-1 ${styles.backBtn}`}
+          >
+            &#8592; Back
+          </Link>
+        </div>
+      </div>
       {typeof window !== 'undefined' && load ? (
         <div className="mx-auto w-11/12">
           <div
@@ -47,84 +55,72 @@ const ID: FC = () => {
                 </div>
 
                 {/* country name and info */}
-                <div className={`${styles.info} pt-2 md:self-center `}>
-                  <div className="pt-2 md:pt-0 md:my-auto md">
+                <div className={`${styles.info} md:self-center `}>
+                  <div className="md pt-4 md:pt-0">
                     <h2 className="mb-4 mt-4 text-xl font-bold">
                       {countryData.name}
                     </h2>
-                    <p className="text-base">
-                      <span className="font-bold">Native Name: </span>
-                      {countryData?.nativeName}
-                    </p>
-                    <p className="text-base">
-                      <span className="font-bold">Population: </span>
-                      {countryData?.population}
-                    </p>
-                    <p className="text-base">
-                      <span className="font-bold">Sub Region: </span>
-                      {countryData.subregion}
-                    </p>
-                    <p className="text-base">
-                      <span className="font-bold">Capital: </span>
-                      {countryData.capital}
-                    </p>
-                  </div>
-                  <div className={`${styles.box} lg:flex`}>
-                    <p className="text-base">
-                      <span className="font-bold">Border Countries: </span>
-                    </p>
-                    <div className='flex flex-wrap'>
-                    {countryData?.borders?.map(
-                      (neighbor: string, idx: number) => {
-                        return (
-                          <div
-                            key={`neighbor-key-${idx}`}
-                            className="rounded bg-white px-2 md:mr-4"
-                          >
-                            {neighbor}
-                          </div>
-                        )
-                      }
-                    )}
+                    <div className={`${styles.details}`}>
+                      <p>
+                        <span className="font-medium">Native Name: </span>
+                        <span className="font-light">
+                          {countryData?.nativeName}
+                        </span>
+                      </p>
+                      <p>
+                        <span className="font-medium">Population: </span>
+                        <span className="font-light">
+                          {countryData?.population}
+                        </span>
+                      </p>
+                      <p>
+                        <span className="font-medium">Sub Region: </span>
+                        <span className="font-light">
+                          {countryData?.subregion}
+                        </span>
+                      </p>
+                      <p>
+                        <span className="font-medium">Capital: </span>
+                        <span className="font-light">
+                          {countryData?.capital}
+                        </span>
+                      </p>
+                      <p className="mt-8 md:mt-0">
+                        <span className="font-medium">Top Level Domain: </span>
+                        <span className="font-light">{countryData?.tld}</span>
+                      </p>
+                      <p>
+                        <span className="font-medium">Currencies: </span>
+                        <span className="font-light">
+                          {countryData?.currencies}
+                        </span>
+                      </p>
+                      <p>
+                        <span className="font-medium">Langauges: </span>
+                        <span className="font-light">
+                          {countryData?.languages}
+                        </span>
+                      </p>
                     </div>
-                  </div>
-                </div>
-                <div className={`${styles.info} pt-2 md:self-center `}>
-                  <div className="pt-2 md:pt-0 md:my-auto">
-                    <h2 className="mb-4 mt-4 text-xl font-bold md:invisible">
-                      {countryData.name}
-                    </h2>
-                    <p className="text-base">
-                      <span className="font-bold">Top Level Domain: </span>
-                      {countryData.tld}
-                    </p>
-                    <p className="text-base">
-                      <span className="font-bold">Currencies: </span>
-                      {countryData.currencies}
-                    </p>
-                    <p className="text-base">
-                      <span className="font-bold">Languages: </span>
-                      {countryData.languages}
-                    </p>
-
-                  </div>
-                  <div className={`${styles.box} ${styles.hide} `}>
-                    <p className="text-base">
-                      <span className="font-bold">Border Countries: </span>
-                    </p>
-                    <div className='flex flex-wrap'></div>
-                    {countryData?.borders?.map(
-                      (neighbor: string, idx: number) => {
-                        return (
-                          <div
-                            key={`neighbor-key-${idx}`}
-                            className="rounded bg-white px-2"
-                          >
-                            {neighbor}
-                          </div>
-                        )
-                      }
-                    )}
+                    <div className={`${styles.box} mt-4 flex`}>
+                      <p className="mb-4 text-base md:mr-2">
+                        <span className="font-bold">Border Countries: </span>
+                      </p>
+                      <div className="flex justify-between">
+                        {countryData?.borders?.map(
+                          (neighbor: string, idx: number) => {
+                            return (
+                              <p
+                                key={`neighbor-key-${idx}`}
+                                className="rounded bg-white px-2 text-center md:mr-4 md:py-2"
+                              >
+                                {neighbor}
+                              </p>
+                            )
+                          }
+                        )}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

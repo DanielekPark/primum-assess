@@ -29,7 +29,16 @@
 }
 
 .link {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;  
+}
+
+.backBtn {
+    border: 0.5px solid #B0B0B0;
+}
+
+.box > div p,  
+.backBtn {
+    box-shadow: 1px 1px 1px 1px #B0B0B0;
 }
 
 .nation .card {
@@ -65,21 +74,15 @@
     padding: 0 0 1.5rem 0;
 }
 
-.box {
-    display: flex; 
-    width: 100%; 
-    gap: 1rem;
-    padding-top: 1rem;
-    align-items: center;
-}
-
-.box button {
+.box > div p  {
     width: 30%;
+    padding-top: 0.05rem;
+    padding-bottom: 0.05rem;
+}
+.box div p{
+    vertical-align: middle;
 }
 
-.nation .info:nth-child(2) .box {
-    visibility: hidden;
-}
 /* ===================================== 
     MEDIA QUERIES
 ========================================*/
@@ -120,6 +123,7 @@
 
     /* ===COUNTRY PAGE ====*/
     .nation .card {
+        margin-top: 0;
         margin-bottom: 0;
     }
 
@@ -134,7 +138,6 @@
 
     .nation .relativeP {
         margin-right: 2rem;
-        margin-top: auto;
     }
 
     .nation h2 {
@@ -143,26 +146,21 @@
     
     .nation .info {
         padding-bottom: 0;
-        height: 100%;
         display: flex;
         flex-direction: column;
-        margin-top: auto; 
+        margin-top: 0; 
         margin-bottom: auto;
     }
 
-    .nation .info p {
-        line-height: 2;
-    }
-    
-    .nation .info:nth-child(2) .box {
-        visibility: visible;
+    .details {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
 
-    .nation .info:nth-child(2) .box, 
-    .nation .info:nth-child(3) {
-        margin-top: auto; 
+    .details p{
+        width: 40%; 
     }
-
   }
 
   @media (min-width: 1024px) {
@@ -173,18 +171,19 @@
     .nation .relativeP {
         margin: auto 2rem 0 0; 
     }
+    .nation .info {
+        margin-bottom: 0;
+        margin-top: auto;
+    }
 
     .box {
-        display: flex;
-        align-items: center;
         width: 100%; 
         gap: 1rem;
         padding-top: 1rem;
         margin-top: auto;
     }
 
-    .hide{
-        visibility: hidden;
+    .box > p:first-child {
+        width: 20%;
     }
-
   }

@@ -52,7 +52,7 @@ const Card = ({ population, region, capital, name,  flags, subregion, languages,
   return (
     <Link
       href={`/info/${name}`}
-      className={`${styles.link} ${styles.card} mb-8 bg-white`}
+      className={`${styles.link} ${styles.card} mb-2 bg-white`}
       onClick={sessionInfo}
     >
       <div className={`${styles.relativeP}`}>
