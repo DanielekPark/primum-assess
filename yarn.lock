@@ -10008,6 +10008,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-icons@npm:^4.8.0":
+  version: 4.8.0
+  resolution: "react-icons@npm:4.8.0"
+  peerDependencies:
+    react: "*"
+  checksum: 4dbba7ad989c295b410e19b2a702722dae44368cb04b6515f9471353552f31ac80bd350f121d5bff79f81504b84039ede44d09e9f035f48bb1032e6eace126c4
+  languageName: node
+  linkType: hard
+
 "react-is@npm:^16.12.0 || ^17.0.0 || ^18.0.0, react-is@npm:^18.0.0, react-is@npm:^18.1.0":
   version: 18.2.0
   resolution: "react-is@npm:18.2.0"
@@ -10990,6 +10999,7 @@ __metadata:
     eslint: ^8.21.0
     prettier: ^2.7.1
     prettier-plugin-tailwindcss: ^0.1.13
+    react-icons: ^4.8.0
     turbo: ^1.4.2
     typescript: ^4.7.4
   languageName: unknown

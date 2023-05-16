@@ -6,9 +6,10 @@ type countriesData = {
   list: any
   searchVal: string
   filtered: Array<unknown>
+  darkMode: boolean
 }
 
-const CountriesList = ({ list, searchVal, filtered }: countriesData) => {
+const CountriesList = ({ list, searchVal, filtered, darkMode }: countriesData) => {
   // shows filtered list if using select
   if (filtered.length > 0) {
     return (
@@ -18,7 +19,8 @@ const CountriesList = ({ list, searchVal, filtered }: countriesData) => {
             <Card 
             key={`react-key${country.name.common + index}`}
             flags={country.flags.svg}
-            name={country.name.common}            population={country.population}
+            name={country.name.common}            
+            population={country.population}
             region={country.region}
             capital={country.capital}
             subregion={country.subregion} 
@@ -28,6 +30,7 @@ const CountriesList = ({ list, searchVal, filtered }: countriesData) => {
             tld={country.tld}
             list={list}
             altSpellings={country.altSpellings}
+            darkMode={darkMode}
             />
           )
         })}
@@ -39,7 +42,7 @@ const CountriesList = ({ list, searchVal, filtered }: countriesData) => {
   if (searchVal.length > 0 && filtered.length < 1) {
     return (
       <>
-        <h2>No results</h2>
+        <h2 style={{ color: darkMode ? "#fff" : "#000000" }}>No results</h2>
       </>
     )
   }
@@ -62,6 +65,7 @@ const CountriesList = ({ list, searchVal, filtered }: countriesData) => {
           tld={country.tld}
           altSpellings={country.altSpellings}
           list={list}
+          darkMode={darkMode}
           />
         )
       })}

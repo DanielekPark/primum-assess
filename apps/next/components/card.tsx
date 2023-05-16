@@ -16,9 +16,10 @@ type country = {
   tld: string
   altSpellings: Array<string>
   list: any
+  darkMode: boolean
 }
 
-const Card = ({ population, region, capital, name,  flags, subregion, languages, currencies, borders, tld, altSpellings, list} : country) => {
+const Card = ({ population, region, capital, name,  flags, subregion, languages, currencies, borders, tld, altSpellings, list, darkMode} : country) => {
 
   //Stores country info in local storage to display country stats
   const sessionInfo = () => {
@@ -64,18 +65,18 @@ const Card = ({ population, region, capital, name,  flags, subregion, languages,
         />
       </div>
       {/* country name and info */}
-      <div className={`${styles.info} pt-2`}>
-        <div className="pt-4">
+      <div style={{ backgroundColor: darkMode ? "#202d36" : "#fff" }} className={`${styles.info} pt-2`}>
+        <div style={{ backgroundColor: darkMode ? "#202d36" : "#fff" , color: darkMode ? "#fff" : "#000000" }} className="pt-4">
             <p className="text-xl font-bold">{name}</p>          
-          <p className="text-base text-gray-700">
+          <p className="text-base">
             <span className="font-bold">Population: </span>
             {population}
           </p>
-          <p className="text-base text-gray-700">
+          <p className="text-base">
             <span className="font-bold">Region: </span>
             {region}
           </p>
-          <p className="text-base text-gray-700">
+          <p className="text-base">
             <span className="font-bold">Capital: </span>
             {capital[0]}
           </p>
